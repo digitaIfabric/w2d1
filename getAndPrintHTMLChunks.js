@@ -18,7 +18,6 @@ https.get(requestOptions, function (response) {
     response.on('data', function (data) {
         console.log('Chunk Received. Length:', data.length);
         console.log(data);
-        //httpsString += data;
 
     });
 
