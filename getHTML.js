@@ -3,8 +3,20 @@ var https = require('https');
 
 function getHTML (options, callback) {
 
-    /* Add your code here */
+    var httpsString = "";
+    var requestOptions = options;
 
+    /* Add your code here */
+    https.get(requestOptions, function (response) {
+
+        response.on('data', function (data) {
+            console.log('Chunk Received. Length:', data.length);
+            httpsString += data;
+            callback(httpsString);
+        });
+
+
+    });
 }
 
 function printHTML (html) {
@@ -16,4 +28,4 @@ var requestOptions = {
     path: '/http-examples/step4.html'
 };
 
-getHTML();
+getHTML(requestOptions, printHTML);
